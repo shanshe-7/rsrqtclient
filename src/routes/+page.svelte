@@ -1,13 +1,19 @@
 <script lang="js">
-  import { Button } from "$lib/components/ui/button";
+  import Link from "../common/link.svelte";
 
-  let bookmarks = false;
-  let fullUrls = true;
-
-  const profileRadioValue = "benoit";
   export let data = [];
 
-  console.log(data);
+  console.log(data.tournament, "data");
 </script>
 
-<div>text</div>
+{#if !data?.tournaments?.length}
+  <div class="flex justify-center align-middle mt-10 p-5 text-center">
+    <p>
+      სამწუხაროდ ტურნირები არ მოიძებნა. თუ გსურთ ტურნირის ატვირთვა გთხოვთ
+      დალოგინდეთ.
+      <Link textColor="text-blue-400" href="/login">შესვლა</Link>
+    </p>
+  </div>
+{/if}
+
+<div></div>

@@ -1,22 +1,5 @@
 <script lang="js">
-  import * as Form from "$lib/components/ui/form";
-  import { Input } from "$lib/components/ui/input";
-  import { superForm } from "sveltekit-superforms";
-  import { zodClient } from "sveltekit-superforms/adapters";
-  import { z } from "zod";
-
-  const schema = z.object({
-    name: z.string().default("Hello world!"),
-    email: z.string().email(),
-  });
-
-  export let data;
-
-  const form = superForm(data, {
-    validators: zodClient(schema),
-  });
-
-  const { form: formData, enhance } = form;
+  import Login from "./Login.svelte";
 </script>
 
 <div
@@ -31,22 +14,5 @@
     </div>
   </div>
 
-  <form class="w-full md:w-2/4" method="POST" use:enhance>
-    <Form.Field {form} name="username">
-      <Form.Control let:attrs>
-        <Form.Label>სახელი:</Form.Label>
-        <Input {...attrs} bind:value={$formData.username} />
-      </Form.Control>
-      <Form.Control let:attrs>
-        <Form.Label>მეილი:</Form.Label>
-        <Input {...attrs} bind:value={$formData.username} />
-      </Form.Control>
-      <Form.Control let:attrs>
-        <Form.Label>პასვორდი:</Form.Label>
-        <Input {...attrs} bind:value={$formData.username} />
-      </Form.Control>
-      <Form.FieldErrors />
-    </Form.Field>
-    <Form.Button disabled>გაგხავნა</Form.Button>
-  </form>
+  <Login />
 </div>

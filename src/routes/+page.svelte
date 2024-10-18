@@ -2,8 +2,6 @@
   import Link from "../common/link.svelte";
 
   export let data = [];
-
-  console.log(data.tournament, "data");
 </script>
 
 {#if !data?.tournaments?.length}

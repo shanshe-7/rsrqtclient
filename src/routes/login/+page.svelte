@@ -1,5 +1,21 @@
 <script lang="js">
   import Login from "./Login.svelte";
+  import Register from "./Register.svelte";
+
+  let state = "login";
+
+  function handleLoginClick() {
+    if (state === "login") return;
+    state = "login";
+  }
+
+  function handleRegisterClick() {
+    if (state === "register") return;
+    state = "register";
+  }
+
+  $: isRegister = state === "register";
+  $: isLogin = state === "login";
 </script>
 
 <div
@@ -7,12 +23,24 @@
 >
   <div class="flex justify-center">
     <div class="flex justify-center gap-2 p-2">
-      <h6 class="flex cursor-pointer pr-2 border-r-2 border-stone-900">
+      <button
+        on:click={handleLoginClick}
+        class={`flex cursor-pointer pr-2 border-r-2 border-stone-900 text-green-800 ${!isLogin ? "text-black" : "cursor-auto"}`}
+      >
         შესვლა
-      </h6>
-      <h6 class="flex cursor-pointer">რეგისტრაცია</h6>
+      </button>
+      <button
+        on:click={handleRegisterClick}
+        class={`flex cursor-pointer text-green-800 ${!isRegister ? "text-black" : "cursor-auto"}`}
+        >რეგისტრაცია</button
+      >
     </div>
   </div>
+  {#if isLogin}
+    <Login />
+  {/if}
 
-  <Login />
+  {#if isRegister}
+    <Register />
+  {/if}
 </div>

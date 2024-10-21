@@ -6,8 +6,6 @@
 
   const profileRadioValue = "benoit";
   export let data = [];
-
-  console.log(data);
 </script>
 
 <div>qt</div>

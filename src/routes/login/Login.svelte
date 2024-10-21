@@ -33,7 +33,7 @@
     } else {
       errors = {};
       try {
-        fetch("http://localhost:8080/api/public/forget-password", {
+        fetch("http://localhost:8080/api/public/login", {
           method: "POST",
           ["Content-type"]: "application/json",
           body: JSON.stringify($formData),
@@ -65,7 +65,12 @@
   <Form.Field {form} name="password">
     <Form.Control let:attrs>
       <Form.Label>პასვორდი</Form.Label>
-      <Input required {...attrs} bind:value={$formData.password} />
+      <Input
+        type="password"
+        required
+        {...attrs}
+        bind:value={$formData.password}
+      />
     </Form.Control>
     <Form.FieldErrors
       ><p class="p-0 h-5">

@@ -10,9 +10,6 @@
 
   const formSchema = z.object({
     email: z.string().email("მეილის არასწორი მისამართი"), // Required valid email
-    password: z
-      .string()
-      .min(6, "პასვორდი უნდა შედგებოდეს მინიმუმ 6 სიმბოლოსგან"),
   });
 
   export let data = {};
@@ -45,34 +42,20 @@
   }
 </script>
 
-<div>
-  <Link href="/forget-password">დაგავიწყდა პაროლი?</Link>
+<div class="flex justify-center items-center flex-col gap-8 p-5 w-full">
+  <form on:submit={handleSubmit} class="w-full md:w-2/4">
+    <Form.Field {form} name="email">
+      <Form.Control let:attrs>
+        <Form.Label>მოქმედი მეილი</Form.Label>
+        <Input required type="email" {...attrs} bind:value={$formData.email} />
+      </Form.Control>
+      <Form.FieldErrors
+        ><p class="p-0 h-5">
+          {errors.hasOwnProperty("email") ? errors["email"] : ""}
+        </p></Form.FieldErrors
+      >
+    </Form.Field>
+
+    <Form.Button class="mt-6" type="submit">გაგზავნა</Form.Button>
+  </form>
 </div>
-
-<form on:submit={handleSubmit} class="w-full md:w-2/4">
-  <Form.Field {form} name="email">
-    <Form.Control let:attrs>
-      <Form.Label>მეილი</Form.Label>
-      <Input required type="email" {...attrs} bind:value={$formData.email} />
-    </Form.Control>
-    <Form.FieldErrors
-      ><p class="p-0 h-5">
-        {errors.hasOwnProperty("email") ? errors["email"] : ""}
-      </p></Form.FieldErrors
-    >
-  </Form.Field>
-
-  <Form.Field {form} name="password">
-    <Form.Control let:attrs>
-      <Form.Label>პასვორდი</Form.Label>
-      <Input required {...attrs} bind:value={$formData.password} />
-    </Form.Control>
-    <Form.FieldErrors
-      ><p class="p-0 h-5">
-        {errors.hasOwnProperty("password") ? errors["password"] : ""}
-      </p></Form.FieldErrors
-    >
-  </Form.Field>
-
-  <Form.Button class="mt-6" type="submit">შესვლა</Form.Button>
-</form>

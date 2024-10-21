@@ -33,7 +33,7 @@
     } else {
       errors = {};
       try {
-        fetch("http://localhost:8080/api/public/forget-password", {
+        fetch("http://localhost:8080/api/public/login", {
           method: "POST",
           ["Content-type"]: "application/json",
           body: JSON.stringify($formData),
@@ -46,7 +46,7 @@
 </script>
 
 <div>
-  <Link href="/forget-password">დაგავიწყდა პაროლი?</Link>
+  <Link>დაგავიწყდა პაროლი?</Link>
 </div>
 
 <form on:submit={handleSubmit} class="w-full md:w-2/4">

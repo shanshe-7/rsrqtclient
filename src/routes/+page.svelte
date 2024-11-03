@@ -14,4 +14,16 @@
   </div>
 {/if}
 
-<div></div>
+{#if data?.tournaments?.length}
+  <div class="flex justify-center align-middle mt-10 p-5 text-center">
+    <p>ტურნირები</p>
+  </div>
+
+  <div class="flex justify-center align-middle mt-10 p-5 text-center">
+    <div class="flex flex-col gap-4">
+      {#each data.tournaments as tournament}
+        <Link href="/tournaments/{tournament.id}">{tournament.name}</Link>
+      {/each}
+    </div>
+  </div>
+{/if}

@@ -1,4 +1,7 @@
 <script lang="js">
+  import { goto } from "$app/navigation"; // Use 'goto' instead of 'navigate' for client-side routing
+
+  import { publicApi } from "./../../lib/api/index.js";
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
   import { superForm } from "sveltekit-superforms";
@@ -33,11 +36,11 @@
     } else {
       errors = {};
       try {
-        fetch("http://localhost:8080/api/public/register", {
-          method: "POST",
-          ["Content-type"]: "application/json",
-          body: JSON.stringify($formData),
-        });
+        await publicApi.post(
+          "http://localhost:8080/api/public/register",
+          $formData
+        );
+        goto("/");
       } catch (error) {
         console.log("error", error);
       }

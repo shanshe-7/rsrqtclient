@@ -1,4 +1,5 @@
 <script lang="js">
+  import { publicApi } from "./../../lib/api/index.js";
   import { page } from "$app/stores";
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
@@ -6,6 +7,8 @@
   import { superValidate } from "sveltekit-superforms/client";
   import { zodClient } from "sveltekit-superforms/adapters";
   import Link from "../../common/link.svelte";
+  import Toast, { addToast } from "$lib/components/toast/Toast.svelte";
+  import { goto } from "$app/navigation"; // Use 'goto' instead of 'navigate' for client-side routing
 
   import { z } from "zod";
 
@@ -21,6 +24,7 @@
   const form = superForm(data);
 
   export let errors = {};
+  let isSubmitting = false;
 
   const { form: formData, errors: formErrors } = form;
 
@@ -41,21 +45,32 @@
 
       try {
         errors = {};
+        isSubmitting = true;
 
-        fetch("http://localhost:8080/api/public/reset-password", {
-          method: "POST",
-          ["Content-type"]: "application/json",
-          body: JSON.stringify({
+        await publicApi.post(
+          "http://localhost:8080/api/public/reset-password",
+          {
             password: $formData.password,
             token,
-          }),
-        });
+          }
+        );
+
+        await addToast("პასვორდი წარმატებით განახლდა", "success", 1000);
+
+        setTimeout(() => {
+          goto("/login");
+        }, 900);
       } catch (error) {
+        addToast(error?.error, "error");
         console.log("error", error);
+      } finally {
+        isSubmitting = false;
       }
     }
   }
 </script>
+
+<Toast />
 
 <div class="flex justify-center items-center flex-col gap-8 p-5 w-full">
   <form on:submit={handleSubmit} class="w-full md:w-2/4">
@@ -93,6 +108,12 @@
       >
     </Form.Field>
 
-    <Form.Button class="mt-6" type="submit">გაგზავნა</Form.Button>
+    <Form.Button class="mt-6" type="submit" disabled={isSubmitting}>
+      {#if isSubmitting}
+        გაგზავნა...
+      {:else}
+        გაგზავნა
+      {/if}</Form.Button
+    >
   </form>
 </div>

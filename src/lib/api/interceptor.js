@@ -37,12 +37,13 @@ export const fetchWithInterceptor = async (url, options = {}) => {
       throw new ApiError("Unauthorized", 401);
     }
 
+    const res = await response.json();
+
     if (!response.ok) {
-      const errorMessage = await response.json();
-      throw new ApiError(errorMessage.message, response.status, errorMessage);
+      return Promise.reject(res);
     }
 
-    return response.json();
+    return res;
   } catch (error) {
     // Handle network errors
   }

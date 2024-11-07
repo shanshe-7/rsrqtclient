@@ -1,6 +1,7 @@
 <script lang="js">
   import Login from "./Login.svelte";
   import Register from "./Register.svelte";
+  import Link from "../../common/link.svelte";
 
   let state = "login";
 
@@ -19,9 +20,9 @@
 </script>
 
 <div
-  class="flex justify-center items-center flex-col gap-8 p-5 border-l-indigo-500 w-full"
+  class="flex relative justify-center items-center flex-col gap-8 p-5 border-l-indigo-500 w-full"
 >
-  <div class="flex justify-center">
+  <div class="flex justify-center items-center flex-col gap-5">
     <div class="flex justify-center gap-2 p-2">
       <button
         on:click={handleLoginClick}
@@ -35,6 +36,12 @@
         >რეგისტრაცია</button
       >
     </div>
+
+    {#if isLogin}
+      <div class="relative sm:absolute sm:right-6">
+        <Link href="/forget-password">დაგავიწყდა პაროლი?</Link>
+      </div>
+    {/if}
   </div>
   {#if isLogin}
     <Login />

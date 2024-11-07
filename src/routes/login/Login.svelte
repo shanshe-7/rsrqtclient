@@ -2,7 +2,6 @@
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
   import { superForm } from "sveltekit-superforms";
-  import Link from "../../common/link.svelte";
 
   import { z } from "zod";
   import { publicApi } from "$lib/api";
@@ -52,10 +51,6 @@
 </script>
 
 <Toast />
-
-<div>
-  <Link href="/forget-password">დაგავიწყდა პაროლი?</Link>
-</div>
 
 <form on:submit={handleSubmit} class="w-full md:w-2/4">
   <Form.Field {form} name="email">

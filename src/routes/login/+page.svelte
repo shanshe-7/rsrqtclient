@@ -25,13 +25,13 @@
     <div class="flex justify-center gap-2 p-2">
       <button
         on:click={handleLoginClick}
-        class={`flex cursor-pointer pr-2 border-r-2 border-stone-900 text-green-800 ${!isLogin ? "text-black" : "cursor-auto"}`}
+        class={`flex cursor-pointer pr-2 border-r-2 border-stone-900 text-green-800 ${!isLogin ? "text-gray-900" : "cursor-auto"}`}
       >
         შესვლა
       </button>
       <button
         on:click={handleRegisterClick}
-        class={`flex cursor-pointer text-green-800 ${!isRegister ? "text-black" : "cursor-auto"}`}
+        class={`flex cursor-pointer text-green-800 ${!isRegister ? "text-gray-900" : "cursor-auto"}`}
         >რეგისტრაცია</button
       >
     </div>

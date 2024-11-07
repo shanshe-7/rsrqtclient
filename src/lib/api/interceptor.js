@@ -31,10 +31,8 @@ export const fetchWithInterceptor = async (url, options = {}) => {
   try {
     const response = await fetch(url, fetchOptions);
 
-    if (response.status === 401) {
+    if (response.status === 401 && !isPublic) {
       localStorage.removeItem("token");
-      window.location.href = "/login";
-      throw new ApiError("Unauthorized", 401);
     }
 
     const res = await response.json();

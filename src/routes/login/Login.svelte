@@ -2,11 +2,12 @@
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
   import { superForm } from "sveltekit-superforms";
-  import { superValidate } from "sveltekit-superforms/client";
-  import { zodClient } from "sveltekit-superforms/adapters";
   import Link from "../../common/link.svelte";
 
   import { z } from "zod";
+  import { publicApi } from "$lib/api";
+  import Toast, { addToast } from "$lib/components/toast/Toast.svelte";
+  import { goto } from "$app/navigation";
 
   const formSchema = z.object({
     email: z.string().email("მეილის არასწორი მისამართი"), // Required valid email
@@ -20,6 +21,7 @@
   const form = superForm(data);
 
   export let errors = {};
+  let isSubmitting = false;
 
   const { form: formData, errors: formErrors } = form;
 
@@ -31,19 +33,25 @@
     if (!validationResult.success) {
       errors = validationResult.error.formErrors.fieldErrors;
     } else {
-      errors = {};
       try {
-        fetch("http://localhost:8080/api/public/login", {
-          method: "POST",
-          ["Content-type"]: "application/json",
-          body: JSON.stringify($formData),
-        });
+        errors = {};
+        isSubmitting = true;
+        await publicApi.post(
+          "http://localhost:8080/api/public/login",
+          $formData
+        );
+        goto("/");
       } catch (error) {
-        console.log("error", error);
+        addToast(error?.error, "error");
+        console.error("error", error);
+      } finally {
+        isSubmitting = false;
       }
     }
   }
 </script>
+
+<Toast />
 
 <div>
   <Link href="/forget-password">დაგავიწყდა პაროლი?</Link>
@@ -79,5 +87,11 @@
     >
   </Form.Field>
 
-  <Form.Button class="mt-6" type="submit">შესვლა</Form.Button>
+  <Form.Button class="mt-6" type="submit" disabled={isSubmitting}>
+    {#if isSubmitting}
+      შესვლა...
+    {:else}
+      შესვლა
+    {/if}</Form.Button
+  >
 </form>

@@ -1,7 +1,8 @@
 <script lang="js">
+  import { authStore } from "$lib/auth";
   import Login from "./Login.svelte";
   import Register from "./Register.svelte";
-  import Link from "../../common/link.svelte";
+  import Link from "../../../common/link.svelte";
 
   let state = "login";
 
@@ -26,22 +27,20 @@
     <div class="flex justify-center gap-2 p-2">
       <button
         on:click={handleLoginClick}
-        class={`flex cursor-pointer pr-2 border-r-2 border-stone-900 text-green-800 ${!isLogin ? "text-gray-900" : "cursor-auto"}`}
+        class={`flex cursor-pointer pr-2 border-r-2 border-stone-900 text-green-800 ${!isLogin ? "text-gray-950" : "cursor-auto"}`}
       >
         შესვლა
       </button>
       <button
         on:click={handleRegisterClick}
-        class={`flex cursor-pointer text-green-800 ${!isRegister ? "text-gray-900" : "cursor-auto"}`}
+        class={`flex cursor-pointer text-green-800 ${!isRegister ? "text-gray-950" : "cursor-auto"}`}
         >რეგისტრაცია</button
       >
     </div>
 
-    {#if isLogin}
-      <div class="relative sm:absolute sm:right-6">
-        <Link href="/forget-password">დაგავიწყდა პაროლი?</Link>
-      </div>
-    {/if}
+    <div class="relative sm:absolute sm:right-6 text-xs">
+      <Link href="/forgot-password">დაგავიწყდა პაროლი?</Link>
+    </div>
   </div>
   {#if isLogin}
     <Login />

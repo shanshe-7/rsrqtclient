@@ -1,4 +1,5 @@
 <script lang="js">
+  import { authStore } from "$lib/auth";
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
   import { superForm } from "sveltekit-superforms";
@@ -35,10 +36,14 @@
       try {
         errors = {};
         isSubmitting = true;
-        await publicApi.post(
+        const data = await publicApi.post(
           "http://localhost:8080/api/public/login",
           $formData
         );
+        const { user, token } = data || {};
+
+        authStore.login({ user, token });
+
         goto("/");
       } catch (error) {
         addToast(error?.error, "error");

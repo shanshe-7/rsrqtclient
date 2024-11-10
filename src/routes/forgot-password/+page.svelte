@@ -1,4 +1,5 @@
 <script lang="js">
+  import { authStore } from "$lib/auth";
   import { publicApi } from "./../../lib/api/index.js";
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
@@ -35,13 +36,14 @@
       isSubmitting = true;
       try {
         await publicApi.post(
-          "http://localhost:8080/api/public/forget-password",
+          "http://localhost:8080/api/public/forgot-password",
           $formData
         );
         addToast("მოთხოვნა წარმატებით გაიგზავნა, გთხოვთ შეამოწმოთ მეილი");
         reset();
       } catch (error) {
-        errors = { email: error?.error };
+        console.error(error);
+        addToast(error?.error, "error");
 
         console.error("error", error);
       } finally {

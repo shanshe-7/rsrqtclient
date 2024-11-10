@@ -1,7 +1,7 @@
 <script lang="js">
   import { goto } from "$app/navigation";
 
-  import { publicApi } from "./../../lib/api/index.js";
+  import { publicApi } from "$lib/api";
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
   import { superForm } from "sveltekit-superforms";
@@ -37,10 +37,12 @@
       try {
         errors = {};
         isSubmitting = true;
-        await publicApi.post(
+        const data = await publicApi.post(
           "http://localhost:8080/api/public/register",
           $formData
         );
+        localStorage.setItem("token", data.token);
+        loginHelper(data.user);
         goto("/");
       } catch (error) {
         addToast(error?.error, "error");
@@ -82,7 +84,12 @@
   <Form.Field {form} name="password">
     <Form.Control let:attrs>
       <Form.Label>პასვორდი</Form.Label>
-      <Input required {...attrs} bind:value={$formData.password} />
+      <Input
+        type="password"
+        required
+        {...attrs}
+        bind:value={$formData.password}
+      />
     </Form.Control>
     <Form.FieldErrors
       ><p class="p-0 h-5">

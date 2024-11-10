@@ -1,4 +1,5 @@
 <script>
+  import { getAuthState, authStore } from "$lib/auth";
   import "../app.css";
   import Link from "../common/link.svelte";
 
@@ -22,7 +23,13 @@
   >
     <Link visited="" href="/">ტურნირები</Link>
 
-    <Link visited="" href="/login">შესვლა</Link>
+    {#if $authStore.isAuthenticated}
+      <button on:click={authStore.logout}>გამოსვლა</button>
+    {/if}
+
+    {#if !$authStore.isAuthenticated}
+      <Link visited="" href="/login">შესვლა</Link>
+    {/if}
   </div>
 
   <slot />
@@ -43,13 +50,13 @@
 
   @keyframes slide-from-right {
     from {
-      transform: translateX(30px);
+      transform: translateX(20px);
     }
   }
 
   @keyframes slide-to-left {
     to {
-      transform: translateX(-30px);
+      transform: translateX(-20px);
     }
   }
 

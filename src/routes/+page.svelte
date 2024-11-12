@@ -1,7 +1,7 @@
 <script lang="js">
   import Link from "../common/link.svelte";
-
-  export let data = [];
+  import Pagination from "$lib/components/pagination/pagination.svelte";
+  export let data;
 </script>
 
 {#if !data?.tournaments?.length}
@@ -15,15 +15,44 @@
 {/if}
 
 {#if data?.tournaments?.length}
-  <div class="flex justify-center align-middle mt-10 p-5 text-center">
+  <div class="flex justify-center align-middle mt-10 p-5 text-center text-xl">
     <p>ტურნირები</p>
   </div>
 
-  <div class="flex justify-center align-middle mt-10 p-5 text-center">
-    <div class="flex flex-col gap-4">
-      {#each data.tournaments as tournament}
-        <Link href="/tournaments/{tournament.id}">{tournament.name}</Link>
-      {/each}
+  <div class="flex flex-col justify-between gap-5">
+    <div class="flex align-middle mt-10 p-5">
+      <div class="flex flex-col gap-4">
+        {#each data.tournaments as tournament}
+          <Link
+            visited="visited:text-purple-400"
+            textColor="text-blue-700"
+            href="/questions">{tournament.name}</Link
+          >
+        {/each}
+        {#each data.tournaments as tournament}
+          <Link
+            visited="visited:text-purple-400"
+            textColor="text-blue-700"
+            href="/questions">{tournament.name}</Link
+          >
+        {/each}
+        {#each data.tournaments as tournament}
+          <Link
+            visited="visited:text-purple-400"
+            textColor="text-blue-700"
+            href="/questions">{tournament.name}</Link
+          >
+        {/each}
+        {#each data.tournaments as tournament}
+          <Link
+            visited="visited:text-purple-400"
+            textColor="text-blue-700"
+            href="/questions">{tournament.name}</Link
+          >
+        {/each}
+      </div>
     </div>
+
+    <Pagination count={data?.tournaments?.length} size={10} />
   </div>
 {/if}

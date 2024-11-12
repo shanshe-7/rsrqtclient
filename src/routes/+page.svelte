@@ -24,7 +24,7 @@
           <Link
             visited="visited:text-purple-400"
             textColor="text-blue-700"
-            href="/questions">{tournament.name}</Link
+            href="/upload">{tournament.name}</Link
           >
         {/each}
       </div>

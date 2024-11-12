@@ -20,7 +20,6 @@ export const load = ({ url }) => {
 
     if (isAuthRoute && isAuthenticated) {
       throw redirect(307, "/");
-      return {};
     }
 
     if (isProtectedRoute && !isAuthenticated) {

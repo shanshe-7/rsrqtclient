@@ -16,6 +16,14 @@ export const api = {
     });
   },
 
+  postNonJson: (url, data, options = {}) => {
+    return fetchWithInterceptor(url, {
+      ...options,
+      method: "POST",
+      body: data,
+    });
+  },
+
   put: (url, data, options = {}) => {
     return fetchWithInterceptor(url, {
       ...options,

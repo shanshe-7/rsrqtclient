@@ -1,7 +1,7 @@
 <script>
+  import Link from "./../common/link.svelte";
   import { getAuthState, authStore } from "$lib/auth";
   import "../app.css";
-  import Link from "../common/link.svelte";
 
   import { onNavigate } from "$app/navigation";
 
@@ -24,10 +24,11 @@
     <Link visited="" href="/">ტურნირები</Link>
 
     {#if $authStore.isAuthenticated}
-      <button on:click={authStore.logout}>გამოსვლა</button>
-    {/if}
-
-    {#if !$authStore.isAuthenticated}
+      <div class="flex align-middle gap-4 text-md">
+        <Link visited="" href="/upload">ატვირთვა</Link>
+        <button on:click={authStore.logout}>გამოსვლა</button>
+      </div>
+    {:else}
       <Link visited="" href="/login">შესვლა</Link>
     {/if}
   </div>

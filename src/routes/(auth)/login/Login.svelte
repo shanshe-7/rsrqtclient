@@ -3,6 +3,7 @@
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
   import { superForm } from "sveltekit-superforms";
+  import { page } from "$app/stores";
 
   import { z } from "zod";
   import { publicApi } from "$lib/api";
@@ -43,8 +44,9 @@
         const { user, token } = data || {};
 
         authStore.login({ user, token });
+        const redirectUrl = $page.url.searchParams.get("redirect") || "/";
 
-        goto("/");
+        goto(redirectUrl);
       } catch (error) {
         addToast(error?.error, "error");
         console.error("error", error);

@@ -29,27 +29,6 @@
             href="/questions">{tournament.name}</Link
           >
         {/each}
-        {#each data.tournaments as tournament}
-          <Link
-            visited="visited:text-purple-400"
-            textColor="text-blue-700"
-            href="/questions">{tournament.name}</Link
-          >
-        {/each}
-        {#each data.tournaments as tournament}
-          <Link
-            visited="visited:text-purple-400"
-            textColor="text-blue-700"
-            href="/questions">{tournament.name}</Link
-          >
-        {/each}
-        {#each data.tournaments as tournament}
-          <Link
-            visited="visited:text-purple-400"
-            textColor="text-blue-700"
-            href="/questions">{tournament.name}</Link
-          >
-        {/each}
       </div>
     </div>
 

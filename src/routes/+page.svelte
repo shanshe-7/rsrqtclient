@@ -7,8 +7,8 @@
 {#if !data?.tournaments?.tournaments?.length}
   <div class="flex justify-center align-middle mt-10 p-5 text-center">
     <p>
-      სამწუხაროდ ტურნირები არ მოიძებნა. ტურნირის ატვირთვა.
-      <Link textColor="text-blue-400" href="/upload">ატვირთვა</Link>
+      სამწუხაროდ ტურნირები არ მოიძებნა.
+      <Link textColor="text-blue-400" href="/upload">ტურნირის ატვირთვა</Link>
     </p>
   </div>
 {:else}
@@ -23,7 +23,7 @@
           <Link
             visited="visited:text-purple-400"
             textColor="text-blue-700"
-            href={`/tournament/:${tournament.id}`}>{tournament.name}</Link
+            href={`/tournament/${tournament.id}`}>{tournament.name}</Link
           >
         {/each}
       </div>

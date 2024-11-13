@@ -23,7 +23,7 @@
           <Link
             visited="visited:text-purple-400"
             textColor="text-blue-700"
-            href="/upload">{tournament.name}</Link
+            href={`/tournament/:${tournament.id}`}>{tournament.name}</Link
           >
         {/each}
       </div>

@@ -8,7 +8,7 @@ export const load = async ({ params, url }) => {
     `http://localhost:8080/api/public/tournament/${id}?page=${page}&limit=${limit}`
   );
 
-  return {
-    tournaments: response,
-  };
+  const { questions, ...tournament } = response || {};
+
+  return { questions, tournament };
 };

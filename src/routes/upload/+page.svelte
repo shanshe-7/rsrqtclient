@@ -58,11 +58,12 @@
         const fd = new FormData();
         fd.append("file", $formData.file);
 
-        const data = await api.postNonJson(
-          "http://localhost:8080/api/protected/file",
-          fd
-        );
-        // goto("/");
+        await api.postNonJson("http://localhost:8080/api/protected/file", fd);
+        addToast("ტურნირი წარმატებით აიტვირთა", "success", 800);
+
+        setTimeout(() => {
+          goto("/");
+        }, 800);
       } catch (error) {
         addToast(error?.error, "error");
         console.error("error", error);

@@ -7,9 +7,8 @@
 {#if !data?.tournaments?.tournaments?.length}
   <div class="flex justify-center align-middle mt-10 p-5 text-center">
     <p>
-      სამწუხაროდ ტურნირები არ მოიძებნა. თუ გსურთ ტურნირის ატვირთვა გთხოვთ
-      დალოგინდეთ.
-      <Link textColor="text-blue-400" href="/login">შესვლა</Link>
+      სამწუხაროდ ტურნირები არ მოიძებნა. ტურნირის ატვირთვა.
+      <Link textColor="text-blue-400" href="/upload">ატვირთვა</Link>
     </p>
   </div>
 {:else}

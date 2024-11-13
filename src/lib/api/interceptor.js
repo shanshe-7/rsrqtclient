@@ -43,7 +43,7 @@ export const fetchWithInterceptor = async (url, options = {}) => {
 
     return res;
   } catch (error) {
-    // Handle network errors
+    Promise.reject(error);
   }
 };
 

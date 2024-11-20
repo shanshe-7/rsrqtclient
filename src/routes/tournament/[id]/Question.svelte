@@ -1,5 +1,11 @@
 <script lang="js">
   export let question;
+  export let isHidden = false;
+  $: localHidden = isHidden;
+
+  const toggleAnswer = () => {
+    localHidden = !localHidden;
+  };
 </script>
 
 <div class="flex flex-col gap-4">
@@ -27,17 +33,28 @@
       {/each}
     </p>
 
-    <p><b>პასუხი:</b> {question?.answer}</p>
-  </div>
-  <div class="flex flex-col gap-1">
-    <p><b>კომენტარი:</b> {question?.comment}</p>
-    <p class="overflow-hidden"><b>წყარო:</b> {question?.source}</p>
-    <p>
-      <b>ავტორი:</b>
-      {#each question?.authors as author, index (author)}
-        {author}{#if index < question?.authors.length - 1},
+    <div class="flex items-center gap-2">
+      <p>
+        {#if localHidden}
+          <button on:click={toggleAnswer}> ... </button>
+        {:else}
+          <b>პასუხი:</b>
+          {question?.answer}
         {/if}
-      {/each}
-    </p>
+      </p>
+    </div>
   </div>
+  {#if !localHidden}
+    <div class="flex flex-col gap-1">
+      <p><b>კომენტარი:</b> {question?.comment}</p>
+      <p class="overflow-hidden"><b>წყარო:</b> {question?.source}</p>
+      <p>
+        <b>ავტორი:</b>
+        {#each question?.authors as author, index (author)}
+          {author}{#if index < question?.authors.length - 1},
+          {/if}
+        {/each}
+      </p>
+    </div>
+  {/if}
 </div>

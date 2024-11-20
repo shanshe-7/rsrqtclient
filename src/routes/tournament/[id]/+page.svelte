@@ -1,9 +1,16 @@
 <script lang="js">
   import Pagination from "$lib/components/pagination/pagination.svelte";
   import Question from "./Question.svelte";
+  import { Checkbox } from "$lib/components/ui/checkbox/index.js";
+  import { Label } from "$lib/components/ui/label/index.js";
+  let showAnswer = false;
 
   export let data;
   $: ({ questions, tournament } = data);
+
+  function toggleShowAnswer(value) {
+    showAnswer = value;
+  }
 </script>
 
 <div class="flex flex-col gap-8 pl-10 pr-10 mt-8 mb-8 text-justify">
@@ -30,8 +37,24 @@
     </div>
   {/if}
 
+  <div class="flex items-center space-x-2">
+    <Checkbox
+      onCheckedChange={toggleShowAnswer}
+      id="terms"
+      checked={showAnswer}
+      aria-labelledby="terms-label"
+    />
+    <Label
+      id="terms-label"
+      for="terms"
+      class="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-black"
+    >
+      პასუხების ჩვენება
+    </Label>
+  </div>
+
   {#each questions as question (question.id)}
-    <Question {question} />
+    <Question {question} isHidden={!showAnswer} />
   {/each}
 
   <Pagination count={tournament?.total_count} perPage={50} />

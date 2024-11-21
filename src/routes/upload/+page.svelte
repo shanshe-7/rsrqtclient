@@ -85,7 +85,7 @@
     <p>ტურნირის შექმნა</p>
   </div>
 
-  <p class="text-lg w-1/2 align-middle text-center">
+  <p class="text-lg w-full md:w-2/3 align-middle text-center">
     <strong
       >ფაილის ასატვირთად საჭიროა ფაილს ჰქონდეს სპეციალური ფორმატი. ამიტომ
       ატვირთვამდე გთხოვთ გაეცნოთ</strong

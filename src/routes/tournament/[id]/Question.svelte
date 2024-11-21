@@ -19,7 +19,7 @@
           {#if question?.files?.length > 0}
             {#each question?.files as file (file)}
               <img
-                class="w-1/2 mt-2"
+                class="w-full md:w-1/2 mt-2"
                 src={file?.url}
                 alt={"დასარიგებელი მასალა"}
               />

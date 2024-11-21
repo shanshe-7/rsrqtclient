@@ -47,7 +47,22 @@
   {#if !localHidden}
     <div class="flex flex-col gap-1">
       <p><b>კომენტარი:</b> {question?.comment}</p>
-      <p class="overflow-hidden"><b>წყარო:</b> {question?.source}</p>
+      <p>
+        <b>წყარო:</b>
+        {#each question?.source?.split("\\n") as line, idx (line)}
+          {++idx}.
+          {#if line?.includes("src_link:")}
+            <a
+              class="text-blue-700 underline pr-1"
+              target="_blank"
+              rel="noreferrer nofollow"
+              href={line?.split("src_link:")?.[1]}>ბმული</a
+            >
+          {:else}
+            {line}
+          {/if}
+        {/each}
+      </p>
       <p>
         <b>ავტორი:</b>
         {#each question?.authors as author, index (author)}

@@ -47,7 +47,7 @@
     <Label
       id="terms-label"
       for="terms"
-      class="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-black"
+      class="text-md font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-black cursor-pointer"
     >
       პასუხების ჩვენება
     </Label>

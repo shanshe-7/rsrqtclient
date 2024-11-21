@@ -3,6 +3,7 @@
   import * as Form from "$lib/components/ui/form";
   import { Input } from "$lib/components/ui/input";
   import { superForm } from "sveltekit-superforms";
+  import Link from "../../common/link.svelte";
   import { page } from "$app/stores";
 
   import { z } from "zod";
@@ -83,6 +84,14 @@
   <div class="flex justify-center align-middle mt-8 p-5 text-center text-xl">
     <p>ტურნირის შექმნა</p>
   </div>
+
+  <p class="text-lg w-1/2 align-middle text-center">
+    <strong
+      >ფაილის ასატვირთად საჭიროა ფაილს ჰქონდეს სპეციალური ფორმატი. ამიტომ
+      ატვირთვამდე გთხოვთ გაეცნოთ</strong
+    >
+    <Link href="/instruction" textColor="text-blue-700">ინსტრუქციას</Link>
+  </p>
 
   <form on:submit={handleSubmit} class="w-full md:w-2/4">
     <Form.Field {form} name="file">

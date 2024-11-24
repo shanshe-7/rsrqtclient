@@ -1,4 +1,5 @@
-// lib/api/interceptor.js
+import { authStore } from "$lib/auth";
+
 export class ApiError extends Error {
   constructor(message, status, data) {
     super(message);
@@ -8,7 +9,7 @@ export class ApiError extends Error {
 }
 
 export const fetchWithInterceptor = async (url, options = {}) => {
-  const { isPublic = false, ...otherOptions } = options;
+  const { isPublic = false, isFile = false, ...otherOptions } = options;
 
   const defaultOptions = {
     headers: {
@@ -32,10 +33,15 @@ export const fetchWithInterceptor = async (url, options = {}) => {
     const response = await fetch(url, fetchOptions);
 
     if (response.status === 401 && !isPublic) {
-      localStorage.removeItem("token");
+      authStore.logout();
     }
 
-    const res = await response.json();
+    let res;
+    if (isFile) {
+      res = await response.blob();
+    } else {
+      res = await response.json();
+    }
 
     if (!response.ok) {
       return Promise.reject(res);

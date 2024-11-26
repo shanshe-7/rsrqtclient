@@ -19,14 +19,14 @@
   </h1>
 
   {#if tournament?.authors}
-    <div class="flex gap-2 justify-center">
+    <div class="flex flex-col items-center gap-2 md:flex-row justify-center">
       <span class="font-bold">ავტორები:</span>
-      {#each tournament?.authors as author, index (author)}
-        <span
-          >{author}{#if index < tournament?.authors.length - 1},
-          {/if}</span
-        >
-      {/each}
+      <div class="flex align-middle text-center gap-2 justify-center">
+        {#each tournament?.authors as author, index (author)}
+          {author}{#if index < tournament?.authors.length - 1}, {" "}
+          {/if}
+        {/each}
+      </div>
     </div>
   {/if}
 

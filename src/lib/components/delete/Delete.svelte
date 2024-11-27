@@ -19,11 +19,9 @@
     stroke={color}
     stroke-width="2"
   />
-  <!-- Trash can lid -->
+
   <path d="M4 5h16" stroke={color} stroke-width="2" stroke-linecap="round" />
-  <!-- Handle -->
   <path d="M10 3h4" stroke={color} stroke-width="2" stroke-linecap="round" />
-  <!-- Delete lines -->
   <path
     d="M10 11v6M14 11v6"
     stroke={color}

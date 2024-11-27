@@ -1,6 +1,9 @@
 <script lang="js">
   import Link from "../common/link.svelte";
   import Pagination from "$lib/components/pagination/pagination.svelte";
+
+  import TournamentLink from "$lib/components/tournamentLink/tournamentLink.svelte";
+
   export let data;
 </script>
 
@@ -18,13 +21,9 @@
 
   <div class="flex flex-col justify-between gap-5">
     <div class="flex align-middle mt-10 p-5">
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-4 w-full">
         {#each data.tournaments.tournaments as tournament (tournament.id)}
-          <Link
-            visited="visited:text-purple-400"
-            textColor="text-blue-700"
-            href={`/tournament/${tournament.id}`}>{tournament.name}</Link
-          >
+          <TournamentLink {tournament} />
         {/each}
       </div>
     </div>

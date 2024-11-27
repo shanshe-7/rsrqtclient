@@ -23,14 +23,14 @@
   >
     <Link visited="" href="/">ტურნირები</Link>
 
-    {#if $authStore.isAuthenticated}
-      <div class="flex align-middle gap-4 text-md">
-        <Link visited="" href="/upload">ატვირთვა</Link>
+    <div class="flex align-middle gap-4 text-md">
+      <Link visited="" href="/upload">ატვირთვა</Link>
+      {#if $authStore.isAuthenticated}
         <button on:click={authStore.logout}>გამოსვლა</button>
-      </div>
-    {:else}
-      <Link visited="" href="/login">შესვლა</Link>
-    {/if}
+      {:else}
+        <Link visited="" href="/login">შესვლა</Link>
+      {/if}
+    </div>
   </div>
 
   <slot />

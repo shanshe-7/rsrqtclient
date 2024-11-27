@@ -52,5 +52,3 @@ export const fetchWithInterceptor = async (url, options = {}) => {
     Promise.reject(error);
   }
 };
-
-// Create specific API methods

@@ -8,7 +8,9 @@
   import { zodClient } from "sveltekit-superforms/adapters";
   import Link from "../../common/link.svelte";
   import Toast, { addToast } from "$lib/components/toast/Toast.svelte";
-  import { goto } from "$app/navigation"; // Use 'goto' instead of 'navigate' for client-side routing
+  import { goto } from "$app/navigation";
+  import { PUBLIC_BASE_URL } from "$env/static/public";
+  // Use 'goto' instead of 'navigate' for client-side routing
 
   import { z } from "zod";
 
@@ -47,13 +49,10 @@
         errors = {};
         isSubmitting = true;
 
-        await publicApi.post(
-          "http://localhost:8080/api/public/reset-password",
-          {
-            password: $formData.password,
-            token,
-          }
-        );
+        await publicApi.post(PUBLIC_BASE_URL + "/public/reset-password", {
+          password: $formData.password,
+          token,
+        });
 
         await addToast("პასვორდი წარმატებით განახლდა", "success", 1000);
 

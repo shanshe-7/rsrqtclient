@@ -7,6 +7,7 @@
   import { api } from "$lib/api";
   import Toast, { addToast } from "$lib/components/toast/Toast.svelte";
   import { goto, invalidate } from "$app/navigation";
+  import { PUBLIC_BASE_URL } from "$env/static/public";
 
   const { user } = getAuthState();
 
@@ -23,7 +24,7 @@
       isSubmitting = true;
 
       await api.delete(
-        `http://localhost:8080/api/protected/tournament/${tournament?.id}`
+        `${PUBLIC_BASE_URL}/protected/tournament/${tournament?.id}`
       );
 
       await goto("/", { invalidateAll: true });

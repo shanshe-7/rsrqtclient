@@ -8,6 +8,7 @@
 
   import { z } from "zod";
   import Toast, { addToast } from "$lib/components/toast/Toast.svelte";
+  import { PUBLIC_BASE_URL } from "$env/static/public";
 
   const formSchema = z.object({
     name: z.string().min(2, "სახელი უნდა შედგებოდეს მინიმუმ 2 სიმბოლოსგან"),
@@ -38,7 +39,7 @@
         errors = {};
         isSubmitting = true;
         const data = await publicApi.post(
-          "http://localhost:8080/api/public/register",
+          PUBLIC_BASE_URL + "/public/register",
           $formData
         );
         localStorage.setItem("token", data.token);

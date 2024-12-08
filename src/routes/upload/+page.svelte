@@ -5,6 +5,7 @@
   import { superForm } from "sveltekit-superforms";
   import Link from "../../common/link.svelte";
   import { page } from "$app/stores";
+  import { PUBLIC_BASE_URL } from "$env/static/public";
 
   import { z } from "zod";
   import { api } from "$lib/api";
@@ -59,7 +60,7 @@
         const fd = new FormData();
         fd.append("file", $formData.file);
 
-        await api.postNonJson("http://localhost:8080/api/protected/file", fd);
+        await api.postNonJson(PUBLIC_BASE_URL + "/protected/file", fd);
         addToast("ტურნირი წარმატებით აიტვირთა", "success", 800);
 
         setTimeout(() => {

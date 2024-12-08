@@ -9,6 +9,7 @@
   import { publicApi } from "$lib/api";
   import Toast, { addToast } from "$lib/components/toast/Toast.svelte";
   import { goto } from "$app/navigation";
+  import { PUBLIC_BASE_URL } from "$env/static/public";
 
   const formSchema = z.object({
     email: z.string().email("მეილის არასწორი მისამართი"), // Required valid email
@@ -38,7 +39,7 @@
         errors = {};
         isSubmitting = true;
         const data = await publicApi.post(
-          "http://localhost:8080/api/public/login",
+          PUBLIC_BASE_URL + "/public/login",
           $formData
         );
         const { user, token } = data || {};

@@ -8,6 +8,7 @@
   import { zodClient } from "sveltekit-superforms/adapters";
   import Link from "../../common/link.svelte";
   import Toast, { addToast } from "$lib/components/toast/Toast.svelte";
+  import { PUBLIC_BASE_URL } from "$env/static/public";
 
   import { z } from "zod";
 
@@ -36,7 +37,7 @@
       isSubmitting = true;
       try {
         await publicApi.post(
-          "http://localhost:8080/api/public/forgot-password",
+          PUBLIC_BASE_URL + "/public/forgot-password",
           $formData
         );
         addToast("მოთხოვნა წარმატებით გაიგზავნა, გთხოვთ შეამოწმოთ მეილი");

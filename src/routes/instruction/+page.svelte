@@ -3,6 +3,8 @@
   import { Button } from "$lib/components/ui/button/index.js";
   import Link from "../../common/link.svelte";
 
+  import { PUBLIC_BASE_URL } from "$env/static/public";
+
   let isDownloading = false;
 
   async function handleDownload(event) {
@@ -12,7 +14,7 @@
       isDownloading = true;
 
       const response = await publicApi.get(
-        "http://localhost:8080/api/public/download/example",
+        PUBLIC_BASE_URL + "/public/download/example",
         {
           isFile: true,
         }

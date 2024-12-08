@@ -1,4 +1,5 @@
 <script lang="js">
+  import { authStore } from "$lib/auth";
   import { goto } from "$app/navigation";
 
   import { publicApi } from "$lib/api";
@@ -43,6 +44,7 @@
           $formData
         );
         localStorage.setItem("token", data.token);
+        authStore.login({ user: data.user, token: data.token });
         goto("/");
       } catch (error) {
         addToast(error?.error, "error");

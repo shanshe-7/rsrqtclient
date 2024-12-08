@@ -43,7 +43,6 @@
           $formData
         );
         localStorage.setItem("token", data.token);
-        loginHelper(data.user);
         goto("/");
       } catch (error) {
         addToast(error?.error, "error");

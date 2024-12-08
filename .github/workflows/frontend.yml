@@ -24,12 +24,12 @@ jobs:
 
           # Copy SvelteKit build files
           scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
-            -r client/build/* \
+            -r build/* \
             $USERNAME@$HOST:/var/www/sveltekit/
             
           # Copy package files
           scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
-            client/build/package.json \
+            package.json \
             $USERNAME@$HOST:/var/www/sveltekit/
 
           # Restart SvelteKit

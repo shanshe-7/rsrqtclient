@@ -17,6 +17,8 @@ jobs:
           node-version: "18.20.5"
 
       - name: Build Frontend
+        env:
+          PUBLIC_BASE_URL: ${{ secrets.PUBLIC_BASE_URL }}
         run: |
           npm install
           npm run build

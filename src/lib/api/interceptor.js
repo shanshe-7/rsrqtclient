@@ -36,20 +36,18 @@ export const fetchWithInterceptor = async (url, options = {}) => {
       authStore.logout();
     }
 
+    let res;
+    if (isFile) {
+      res = await response.blob();
+    } else {
+      res = await response.json();
+    }
+
     if (!response?.ok) {
-      return Promise.reject(response);
+      return Promise.reject(res);
     }
 
-    if (options.method === "GET") {
-      let res;
-      if (isFile) {
-        res = await response.blob();
-      } else {
-        res = await response.json();
-      }
-
-      return res;
-    }
+    return res;
   } catch (error) {
     Promise.reject(error);
   }

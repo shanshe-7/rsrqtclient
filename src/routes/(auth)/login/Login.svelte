@@ -44,6 +44,11 @@
         );
         const { user, token } = data || {};
 
+        if (!user || !token) {
+          addToast("მონაცემები არასწორია", "error");
+          return;
+        }
+
         authStore.login({ user, token });
         const redirectUrl = $page.url.searchParams.get("redirect") || "/";
 

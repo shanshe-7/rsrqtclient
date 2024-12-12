@@ -83,7 +83,10 @@
 
     <p><strong>tour_name:</strong> სახელი</p>
     <p><strong>tour_author:</strong> ავტორი1, ავტორი2, ავტორი3</p>
-    <p><strong>tour_date:</strong> 2024-03-10</p>
+    <p>
+      <strong>tour_date:</strong> 2024-03-10 (ამ ფრომატით - YYYY-MM-DD - წელი - თვე
+      - დღე)
+    </p>
 
     <p class="text-sm mt-2">
       * - ამ ეტაპზე სამწუხაროდ ვერ მოხერხდა ტესტერების შესახებ ინორმაციის

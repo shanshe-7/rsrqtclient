@@ -49,7 +49,7 @@
 
         goto(redirectUrl);
       } catch (error) {
-        addToast(error?.error, "error");
+        addToast(error?.error || error?.statusText, "error");
         console.error("error", error);
       } finally {
         isSubmitting = false;

@@ -50,13 +50,13 @@
       <p>
         <b>წყარო:</b>
         {#each question?.source?.split("\\n") as line, idx (line)}
-          {++idx}.
-          {#if line?.includes("src_link:")}
+          {++idx}
+          {#if line?.trim()?.startsWith("https://")}
             <a
               class="text-blue-700 underline pr-1"
               target="_blank"
               rel="noreferrer nofollow"
-              href={line?.split("src_link:")?.[1]}>ბმული</a
+              href={line}>ბმული</a
             >
           {:else}
             {line}

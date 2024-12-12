@@ -47,7 +47,7 @@
         authStore.login({ user: data.user, token: data.token });
         goto("/");
       } catch (error) {
-        addToast(error?.error, "error");
+        addToast(error?.error || error?.statusText, "error");
         console.error("error", error);
       } finally {
         isSubmitting = false;

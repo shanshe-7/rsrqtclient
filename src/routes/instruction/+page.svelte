@@ -133,14 +133,12 @@
       <br />
       * - თუ წყარო არის ლინკი და არა ტექსტი, მიუთითეთ პირდაპირ ლინკი და არა მაგალითი
       "წყარო", ან "ბმული".
-      <br />
-      * - თუ წყარო არის ლინკი წინ დაუწერეთ src_link:
+
       <br />
       * - არ დანომროთ წყაროები. წყაროები ერთმანეთისგან გამოყავით ამ სიმბოლოთი.
       <strong>\n</strong>
       <br />
-      * - წყაროს მაგალითი: "question_source: ირაკლი მახარაძე „დიადი მუნჯი“ \n src_link:
-      https://www.live.ge/fexburti/pirveli-mertskhlis-alegoria/ "
+      * - წყაროს მაგალითი: "question_source: ირაკლი მახარაძე „დიადი მუნჯი“ \n https://www.live.ge/fexburti/pirveli-mertskhlis-alegoria/
     </p>
     <p><strong>question_author:</strong> ავტორების სია</p>
     <p class="text-sm mt-2">
@@ -164,7 +162,7 @@
       ბავშვობა მთავრდება. სტენლი კუბრიკი 1960-იან წლებში არტურ კლარკის
       ნაწარმოების “ბავშვობის დასასულის” ადაპტაციას აპირებდა, თუმცა საბოლოოდ
       რეჟისორმა კლარკის სხვა ნაწარმოებზე შეაჩერა არჩევანი. <br />
-      question_source: “ჩემი წუთისოფელი” - ვახუშტი კოტეტიშვილი \n src_link: https://en.wikipedia.org/wiki/Childhood%27s_End#cite_note-Baxter-27
+      question_source: “ჩემი წუთისოფელი” - ვახუშტი კოტეტიშვილი \n https://en.wikipedia.org/wiki/Childhood%27s_End#cite_note-Baxter-27
       <br /> question_author: შანშე ქენქაძე.
     </p>
   </div>

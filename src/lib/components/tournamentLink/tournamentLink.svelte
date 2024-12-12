@@ -31,7 +31,7 @@
       addToast("ტურნირი წაიშალა", "success");
     } catch (error) {
       handleToggleDialog();
-      addToast(error?.error, "error");
+      addToast(error?.error || error?.statusText, "error");
     } finally {
       isSubmitting = false;
     }

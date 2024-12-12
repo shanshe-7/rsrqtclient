@@ -44,7 +44,7 @@
         reset();
       } catch (error) {
         console.error(error);
-        addToast(error?.error, "error");
+        addToast(error?.error || error?.statusText, "error");
 
         console.error("error", error);
       } finally {

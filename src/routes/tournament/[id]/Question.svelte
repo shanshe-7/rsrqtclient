@@ -50,7 +50,7 @@
       <p>
         <b>წყარო:</b>
         {#each question?.source?.split("\\n") as line, idx (line)}
-          {++idx}
+          {++idx}.
           {#if line?.trim()?.startsWith("https://")}
             <a
               class="text-blue-700 underline pr-1"

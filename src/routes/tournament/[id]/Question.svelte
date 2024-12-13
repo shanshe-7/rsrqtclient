@@ -33,13 +33,23 @@
       {/each}
     </p>
 
-    <div class="flex items-center gap-2">
+    <div class="flex flex-col gap-2">
+      {#if localHidden}
+        <button class="w-fit" on:click={toggleAnswer}> ... </button>
+      {/if}
       <p>
-        {#if localHidden}
-          <button on:click={toggleAnswer}> ... </button>
-        {:else}
+        {#if !localHidden}
           <b>პასუხი:</b>
-          {question?.answer}
+
+          {#each question?.answer?.split("\\n") as line, index (line)}
+            {#if index === 0}
+              {line}
+            {:else}
+              <p class="mt-0">
+                {line}
+              </p>
+            {/if}
+          {/each}
         {/if}
       </p>
     </div>

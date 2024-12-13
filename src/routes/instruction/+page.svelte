@@ -72,9 +72,7 @@
     > მაგალითი ფაილი.
   </p>
 
-  <p class="text-lg w-full">
-    ფაილის ასატვრირთად აუცილებელია იყოთ დალოგინებული.
-  </p>
+  <p class="text-lg w-full">ფაილის ასატვირთად აუცილებელია იყოთ დალოგინებული.</p>
 
   <p class="text-lg w-full">ფაილი უნდა იყოს doc, docx ფორმატის.</p>
 
@@ -84,7 +82,7 @@
     <p><strong>tour_name:</strong> სახელი</p>
     <p><strong>tour_author:</strong> ავტორი1, ავტორი2, ავტორი3</p>
     <p>
-      <strong>tour_date:</strong> 2024-03-10 (ამ ფრომატით - YYYY-MM-DD - წელი - თვე
+      <strong>tour_date:</strong> 2024-03-10 (ამ ფორმატით - YYYY-MM-DD - წელი - თვე
       - დღე)
     </p>
 
@@ -141,7 +139,7 @@
       * - არ დანომროთ წყაროები. წყაროები ერთმანეთისგან გამოყავით ამ სიმბოლოთი.
       <strong>\n</strong>
       <br />
-      * - წყაროს მაგალითი: "question_source: ირაკლი მახარაძე „დიადი მუნჯი“ \n https://www.live.ge/fexburti/pirveli-mertskhlis-alegoria/
+      * - წყაროს მაგალითი: question_source: ირაკლი მახარაძე „დიადი მუნჯი“ \n https://www.live.ge/fexburti/pirveli-mertskhlis-alegoria/
     </p>
     <p><strong>question_author:</strong> ავტორების სია</p>
     <p class="text-sm mt-2">
@@ -191,6 +189,16 @@
       <br /> question_comment: კომენტარი <br />
       question_source: წყარო
       <br /> question_author: ავტორი
+    </p>
+  </div>
+
+  <div class="text-lg w-full flex flex-col gap-2 mt-3">
+    <p class="text-underline underline italic">
+      <b>მნიშვნელოვანი ინფორმაცია:</b>
+    </p>
+    <p>
+      ატვირთვის შემდეგ შეამოწმეთ ატვირთული ტურნირი. თუ მოხდა ისე რომ სწორად არ
+      აიტვირთა, წაშალეთ ტურნირი, ჩაასწორეთ ფაილი და თავიდან ატვირთეთ.
     </p>
   </div>
 </div>

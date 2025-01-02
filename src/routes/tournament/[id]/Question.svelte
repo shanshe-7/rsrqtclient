@@ -6,6 +6,17 @@
   const toggleAnswer = () => {
     localHidden = !localHidden;
   };
+
+  function isLink(linkstr) {
+    if (typeof linkstr !== "string") return false;
+
+    const trimmed = linkstr.trim();
+
+    if (trimmed.startsWith("https://") || trimmed.startsWith("http://"))
+      return true;
+
+    return false;
+  }
 </script>
 
 <div class="flex flex-col gap-4">
@@ -43,7 +54,20 @@
 
           {#each question?.answer?.split("\\n") as line, index (line)}
             {#if index === 0}
-              {line}
+              {#if line?.includes("ჩათვლა:")}
+                {#each line?.split("ჩათვლა:") as item, idx (item)}
+                  {#if idx === 0}
+                    {item}
+                  {:else}
+                    <div class="flex gap-1">
+                      <b>ჩათვლა:</b>
+                      <p>{item}</p>
+                    </div>
+                  {/if}
+                {/each}
+              {:else}
+                {line}
+              {/if}
             {:else}
               <p class="mt-0">
                 {line}
@@ -61,7 +85,7 @@
         <b>წყარო:</b>
         {#each question?.source?.split("\\n") as line, idx (line)}
           {++idx}.
-          {#if line?.trim()?.startsWith("https://")}
+          {#if isLink(line)}
             <a
               class="text-blue-700 underline pr-1"
               target="_blank"

@@ -36,15 +36,31 @@ export const fetchWithInterceptor = async (url, options = {}) => {
       authStore.logout();
     }
 
+    const isJSON = response.headers
+      .get("content-type")
+      ?.includes("application/json");
+    console.log(isJSON, "json");
+
+    console.log(
+      response.headers.get("content-type")?.includes("application/json"),
+      "abc"
+    );
+
+    if (!response?.ok) {
+      const isJSON = response.headers
+        .get("content-type")
+        ?.includes("application/json");
+
+      const errorData = isJSON ? await response?.json() : response;
+
+      return Promise.reject(errorData);
+    }
+
     let res;
     if (isFile) {
       res = await response.blob();
     } else {
-      res = await response.json();
-    }
-
-    if (!response?.ok) {
-      return Promise.reject(res);
+      res = await response?.json();
     }
 
     return res;

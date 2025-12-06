@@ -11,7 +11,9 @@
   <div class="flex justify-center align-middle mt-10 p-5 text-center">
     <p>
       სამწუხაროდ ტურნირები არ მოიძებნა.
-      <Link textColor="text-blue-400" href="/upload">ტურნირის ატვირთვა</Link>
+      <Link textColor="text-blue-400" href="/upload-file"
+        >ტურნირის ატვირთვა</Link
+      >
     </p>
   </div>
 {:else}

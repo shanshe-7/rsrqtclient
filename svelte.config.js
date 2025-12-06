@@ -1,11 +1,12 @@
-import adapter from "@sveltejs/adapter-node";
+import adapter from "@sveltejs/adapter-static";
 
-const config = {
+export default {
   kit: {
     adapter: adapter({
-      out: "build",
+      // default options
+      pages: "build",
+      assets: "build",
+      fallback: "index.html",
     }),
   },
 };
-
-export default config;

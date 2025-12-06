@@ -37,16 +37,19 @@ jobs:
           # Copy SvelteKit build files
           scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
             -r build/* \
-            $USERNAME@$HOST:/var/www/sveltekit/
+            $USERNAME@$HOST:/var/www/rsrquestions/
             
           # Copy package files
           scp -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no \
             package.json \
-            $USERNAME@$HOST:/var/www/sveltekit/
+            $USERNAME@$HOST:/var/www/rsrquestions/
 
           # Restart SvelteKit
           ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
-            cd /var/www/sveltekit
-            npm install
-            pm2 restart sveltekit
+
+
+          ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
+            sudo systemctl reload nginx
           EOF
+
+  

@@ -24,7 +24,7 @@
     <Link visited="" href="/">ტურნირები</Link>
 
     <div class="flex align-middle gap-4 text-md">
-      <Link visited="" href="/upload">ატვირთვა</Link>
+      <Link visited="" href="/upload-file">ატვირთვა</Link>
       {#if $authStore.isAuthenticated}
         <button on:click={authStore.logout}>გამოსვლა</button>
       {:else}

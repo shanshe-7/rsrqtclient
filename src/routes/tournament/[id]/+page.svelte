@@ -37,7 +37,7 @@
     </div>
   {/if}
 
-  <div class="flex items-center space-x-2">
+  <div class="flex items-center space-x-2 pl-32">
     <Checkbox
       onCheckedChange={toggleShowAnswer}
       id="terms"

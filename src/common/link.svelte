@@ -10,6 +10,8 @@
   class={`${textColor} underline-offset-4 hover:underline ${visited}`}
   variant="link"
   {href}
+  data-sveltekit-preload-data="off"
+  data-sveltekit-noscroll
   on:click|preventDefault={() => goto(href)}
 >
   <slot />

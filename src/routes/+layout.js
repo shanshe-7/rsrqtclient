@@ -3,7 +3,7 @@ import { browser } from "$app/environment";
 import { goto } from "$app/navigation";
 import { redirect } from "@sveltejs/kit";
 
-const protectedRoutes = ["/upload", "/instruction"];
+const protectedRoutes = ["/upload-file", "/instruction"];
 const authRoutes = ["/login", "/forgot-password"];
 
 export const load = ({ url }) => {

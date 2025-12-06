@@ -36,16 +36,6 @@ export const fetchWithInterceptor = async (url, options = {}) => {
       authStore.logout();
     }
 
-    const isJSON = response.headers
-      .get("content-type")
-      ?.includes("application/json");
-    console.log(isJSON, "json");
-
-    console.log(
-      response.headers.get("content-type")?.includes("application/json"),
-      "abc"
-    );
-
     if (!response?.ok) {
       const isJSON = response.headers
         .get("content-type")

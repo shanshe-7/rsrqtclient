@@ -19,7 +19,7 @@
   }
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 pr-32 pl-32">
   <div class="flex flex-col gap-4">
     <p>
       {question?.question_number}.

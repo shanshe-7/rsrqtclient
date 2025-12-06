@@ -51,7 +51,7 @@
   </h4>
 
   <div class="flex w-full text-center items-center justify-between gap-2">
-    <Link visited="visited:text-purple-400" href="/upload">ატვირთვა</Link>
+    <Link visited="visited:text-purple-400" href="/upload-file">ატვირთვა</Link>
     <Button
       class="cursor-pointer"
       on:click={handleDownload}

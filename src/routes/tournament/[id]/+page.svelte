@@ -6,12 +6,17 @@
   import Timer from "./Timer.svelte";
 
   let showAnswer = false;
+  let showTimer = true;
 
   export let data;
   $: ({ questions, tournament } = data);
 
   function toggleShowAnswer(value) {
     showAnswer = value;
+  }
+
+  function toggleTimer(value) {
+    showTimer = value;
   }
 </script>
 
@@ -40,7 +45,7 @@
       </div>
     {/if}
 
-    <div class="flex items-center space-x-2 md:pl-[285px]">
+    <div class="flex items-center space-x-2 md:pl-[297px]">
       <Checkbox
         onCheckedChange={toggleShowAnswer}
         id="terms"
@@ -57,8 +62,21 @@
     </div>
 
     <div class="flex gap-8">
-      <div class="hidden md:block sticky top-4 h-screen">
-        <Timer />
+      <div
+        class="flex flex-col gap-8 hidden md:flex sticky top-4 h-fit p-2 rounded-[8px] bg-slate-100"
+      >
+        <div class="flex pt-2 pb-2 pl-1 gap-2 w-[250px]">
+          <Label id="timer">თაიმერი</Label>
+          <Checkbox
+            onCheckedChange={toggleTimer}
+            checked={showTimer}
+            aria-labelledby="timer"
+          />
+        </div>
+
+        {#if showTimer}
+          <Timer />
+        {/if}
       </div>
 
       <div class="flex flex-col gap-12">

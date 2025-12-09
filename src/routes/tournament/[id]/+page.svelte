@@ -57,11 +57,11 @@
     </div>
 
     <div class="flex gap-8">
-      <div class="hidden md:block">
+      <div class="hidden md:block sticky top-4 h-screen">
         <Timer />
       </div>
 
-      <div>
+      <div class="flex flex-col gap-12">
         {#each questions as question (question.id)}
           <Question {question} isHidden={!showAnswer} />
         {/each}

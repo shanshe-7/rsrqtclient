@@ -19,7 +19,7 @@
   }
 </script>
 
-<div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 bg-slate-50 p-3 rounded-[8px]">
   <div class="flex flex-col gap-4">
     <p>
       {question?.question_number}.
@@ -46,7 +46,22 @@
 
     <div class="flex flex-col gap-2">
       {#if localHidden}
-        <button class="w-fit" on:click={toggleAnswer}> ... </button>
+        <button
+          class="w-fit flex items-center justify-center gap-1 mt-2 p-2 font-bold hover:bg-slate-200 hover:rounded-[12px]"
+          on:click={toggleAnswer}
+        >
+          პასუხის ჩვენება <svg
+            width="12"
+            height="12"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 15.4l7.7-7.3c.4-.4 1-.4 1.4 0 .4.4.4 1 0 1.4l-8 8c-.4.4-1 .4-1.4 0l-8-8c-.4-.4-.4-1 0-1.4.4-.4 1-.4 1.4 0l6.9 7.3z"
+              fill="currentColor"
+            />
+          </svg>
+        </button>
       {/if}
       <p class="flex gap-1 flex-wrap align-middle">
         {#if !localHidden}
